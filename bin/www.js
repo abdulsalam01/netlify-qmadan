@@ -19,7 +19,7 @@ global.basePage = require('../models/BaseQuery');
 var app = require('../app');
 var debug = require('debug')('qmadan-server:server');
 var http = require('http');
-
+var serverless = require('serverless-http');
 /**
  * Get port from environment and store in Express.
  */
@@ -100,3 +100,5 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
+
+module.exports.handler = serverless(app);
